@@ -3,6 +3,7 @@
  * 订阅发布
  *
  * */
+
 function Person(name) {
     this.name = name;
     this._events = {};
@@ -24,6 +25,16 @@ Person.prototype.emit = function (eventName) {
     })
 };
 
+Person.prototype.once = function(eventName,callback){
+    function onceCallback(){
+        callback.apply(this,arguments);
+
+        this.removeEventListener(eventName,onceCallback);
+    }
+    this.on(eventName,onceCallback);
+};
+
+
 var girl = new Person;
 girl.on('长发及腰', function () {
     console.log('我来娶你');
@@ -32,3 +43,11 @@ girl.on('长发及腰', function () {
     console.log('我撩你');
 });
 girl.emit('长发及腰');
+// girl.once('18',function(style){
+//     console.log(style,'嫁给我');
+// });
+girl.once('18',function(){
+    console.log('很幸福');
+});
+girl.emit('18','快乐');
+girl.emit('18','快乐');
