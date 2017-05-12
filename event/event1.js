@@ -16,11 +16,11 @@ Person.prototype.on = function (eventName, callback) {
     }
 };
 Person.prototype.emit = function (eventName) {
-    var args = Array.prototype.slice.call(arguments, 1);
-    var callbacks = this._events[eventName];
-
+    var args = Array.prototype.slice.call(arguments, 1);//要执行的函数的名字的数组，例如：下边的‘长发及腰’；
+    var callbacks = this._events[eventName]; //要执行的回调函数
+    var self = this;
     callbacks.forEach(function (callback) {
-        callback.apply(this, args);
+        callback.apply(self, args);
     })
 };
 
