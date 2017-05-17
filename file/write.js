@@ -22,7 +22,7 @@ fs.writeFile('line.txt',new Buffer('第二行'),{
 fs.appendFile('line.txt',new Buffer('第3行'));
 console.log(Math.pow(2,6)-1);//0-63
 /*
-* base64
+* base64 加密解密
 * base64是把三个8位字节转换成4个6位字节，然后再6位字节前补两个0；
 *
 * */
