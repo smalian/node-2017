@@ -10,7 +10,7 @@ var app = http.createServer((req,res)=>{
     var urlObj = url.parse(req.url,true);
     var pathname = urlObj.pathname;
     if(pathname == '/'){
-        fs.createReadStream('./index.html').pipe(res);
+        fs.createReadStream('./index.ejs').pipe(res);
     }else if(pathname == '/post') {
         var parser = new formidable.IncomingForm();
         parser.parse(req,(err,fields,files)=>{
